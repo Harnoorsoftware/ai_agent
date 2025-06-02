@@ -16,7 +16,7 @@ client = ChatCompletionsClient(
 
 st.title("Your typical AI agent -> Viva ")
 
-user_query = st.text_input("Ask the me anything :")
+user_query = st.text_input("How can I assist  you today ?")
 
 if user_query:
     try:
