@@ -1,6 +1,5 @@
 import streamlit as st
-from azure.ai.openai import OpenAIClient
-from azure.ai.inference.models import ChatMessage, ChatRole
+from azure.ai.openai import OpenAIClient , ChatMessage
 from azure.core.credentials import AzureKeyCredential
 
 # Setup
