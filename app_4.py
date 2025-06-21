@@ -1,8 +1,8 @@
 import streamlit as st
-from azure.ai.openai import OpenAIClient , ChatMessage
+from azure.ai.openai import ChatCompletionsClient, ChatMessage
 from azure.core.credentials import AzureKeyCredential
+from azure.core.exceptions import HttpResponseError
 
-# Setup
 token = st.secrets["GITHUB_TOKEN"]
 endpoint = "harnoor-software-ai-agent.streamlit.app"
 model = "openai/gpt-4.1-nano"
@@ -12,16 +12,13 @@ client = ChatCompletionsClient(
     credential=AzureKeyCredential(token),
 )
 
-# Set page config
 st.set_page_config(page_title="Viva - AI Assistant")
 
-# Initialize session state for chat history
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
         ChatMessage(role=ChatRole.SYSTEM, content="You are an assistant named Viva.")
     ]
 
-# Sidebar: settings and theme
 with st.sidebar:
     if st.button("Clear chat"):
         st.session_state.chat_history = [
