@@ -4,7 +4,7 @@ from azure.core.credentials import AzureKeyCredential
 
 # Setup
 token = st.secrets["GITHUB_TOKEN"]
-endpoint = "https://models.github.ai/inference"
+endpoint = "harnoor-software-ai-agent.streamlit.app"
 model = "openai/gpt-4.1-nano"
 
 client = ChatCompletionsClient(
