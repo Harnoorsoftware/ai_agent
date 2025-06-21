@@ -1,5 +1,5 @@
 import streamlit as st
-from azure.ai.openai import ChatCompletionsClient, ChatMessage
+from azure.ai import ChatCompletionsClient, ChatMessage
 from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 
