@@ -29,13 +29,10 @@ with st.sidebar:
         ]
         st.experimental_rerun()
 
-# Title
 st.title("Your typical AI agent -> Viva")
 
-# User input
 user_query = st.text_input("How can I assist you today?", key="input")
 
-# Handle input
 if user_query:
     st.session_state.chat_history.append(ChatMessage(role=ChatRole.USER, content=user_query))
     with st.spinner("Thinking..."):
@@ -52,8 +49,7 @@ if user_query:
             )
         except Exception as e:
             st.error(f"Error: {e}")
-
-# Display chat history
+            
 for msg in st.session_state.chat_history:
     if msg.role == ChatRole.USER:
         st.markdown(f"**You:** {msg.content}")
