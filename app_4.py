@@ -10,6 +10,9 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.environ.get("GITHUB_TOKEN")
 
+# Debugging: Print the token to check if it's loaded
+print("GITHUB_TOKEN:", token)  # Remove this line after debugging
+
 if not token:
     st.error("GITHUB_TOKEN is not set. Please check your environment variables.")
     st.stop()
