@@ -10,6 +10,10 @@ from dotenv import load_dotenv
 load_dotenv()
 token = os.environ.get("GITHUB_TOKEN")
 
+if not token:
+    st.error("GITHUB_TOKEN is not set. Please check your environment variables.")
+    st.stop()
+
 # Azure AI client setup
 endpoint = "https://models.github.ai/inference"
 model = "openai/gpt-4.1-nano"
@@ -51,7 +55,11 @@ if user_query and pdf_text:
             model=model
         )
 
-        st.write("**AI Answer:**", response.choices[0].message.content)
+        # Check if response has choices
+        if response.choices and len(response.choices) > 0:
+            st.write("**AI Answer:**", response.choices[0].message.content)
+        else:
+            st.error("No response from the AI model.")
 
     except Exception as e:
         st.error(f"Error during inference: {e}")
