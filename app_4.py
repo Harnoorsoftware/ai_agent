@@ -11,19 +11,17 @@ import streamlit as st
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()  # Ensure this is loading the correct .env file
-
-# Check if the token is set
+load_dotenv()
 token = os.environ.get("GITHUB_TOKEN")
 
-# Debugging: Print all environment variables
-print("All Environment Variables:", os.environ)  # Check if GITHUB_TOKEN is present
+# Azure AI client setup
+endpoint = "https://models.github.ai/inference"
+model = "openai/gpt-4.1-nano"
 
-if not token:
-    st.error("GITHUB_TOKEN is not set. Please check your environment variables.")
-    st.stop()
-
-# Continue with the rest of your code...
+client = ChatCompletionsClient(
+    endpoint=endpoint,
+    credential=AzureKeyCredential(token),
+)
 
 
 # Azure AI client setup
