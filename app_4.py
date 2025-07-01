@@ -6,16 +6,25 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from dotenv import load_dotenv
 
+import os
+import streamlit as st
+from dotenv import load_dotenv
+
 # Load environment variables
-load_dotenv()
+load_dotenv()  # Ensure this is loading the correct .env file
+
+# Check if the token is set
 token = os.environ.get("GITHUB_TOKEN")
 
-# Debugging: Print the token to check if it's loaded
-print("GITHUB_TOKEN:", token)  # Remove this line after debugging
+# Debugging: Print all environment variables
+print("All Environment Variables:", os.environ)  # Check if GITHUB_TOKEN is present
 
 if not token:
     st.error("GITHUB_TOKEN is not set. Please check your environment variables.")
     st.stop()
+
+# Continue with the rest of your code...
+
 
 # Azure AI client setup
 endpoint = "https://models.github.ai/inference"
