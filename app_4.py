@@ -20,7 +20,7 @@ client = ChatCompletionsClient(
 )
 
 # Streamlit UI
-st.title("📄 AI PDF Agent")
+st.title("📄 AI Agent - PDF Reader ")
 st.markdown("Upload a PDF and ask questions based on its content.")
 
 uploaded_file = st.file_uploader("Upload PDF", type=["pdf"])
